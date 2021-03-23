@@ -1,0 +1,42 @@
+﻿@model Movie
+
+
+<h1>Edit Movie</h1>
+<p>Please edit your movie entry here</p>
+
+<form asp-controller="Home" asp-action="EditMovie" method="post">
+    <div class="form-group">
+        <label asp-for="Title">Title:</label>
+        <input asp-for="Title" value="@Model.Title" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Category">Category:</label>
+        <input asp-for="Category" value="@Model.Category" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Year">Year:</label>
+        <input asp-for="Year" value="@Model.Year" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Director">Director:</label>
+        <input asp-for="Director" value="@Model.Director" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Rating">Rating:</label>
+        <input asp-for="Rating" value="@Model.Rating" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Edited">Edited:</label>
+        <input asp-for="Edited" value="@Model.Edited" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LentTo">Lent To:</label>
+        <input asp-for="LentTo" value="@Model.LentTo" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Notes">Notes:</label>
+        <input asp-for="Notes" value="@Model.Notes" />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <div asp-validation-summary="All" class="text-danger"></div>
+</form>

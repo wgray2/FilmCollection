@@ -15,22 +15,31 @@
         <tbody>
             @foreach (IS_413_Assignemnt_3.Models.Movie x in Model)
             {
-                if (x.Title == "Independence Day")
-                {
-                }
-                else
-                {
-                    <tr>
-                        <td>@x.Category</td>
-                        <td>@x.Title</td>
-                        <td>@x.Year</td>
-                        <td>@x.Director</td>
-                        <td>@x.Rating</td>
-                        <td>@x.Edited</td>
-                        <td>@x.LentTo</td>
-                        <td>@x.Notes</td>
-                    </tr>
-                }
+                
+            <tr>
+                <td>@x.Category</td>
+                <td>@x.Title</td>
+                <td>@x.Year</td>
+                <td>@x.Director</td>
+                <td>@x.Rating</td>
+                <td>@x.Edited</td>
+                <td>@x.LentTo</td>
+                <td>@x.Notes</td>
+                <td class="text-center">
+                    <form asp-page-handler="Remove" method="post">
+                        <input type="hidden" name="MovieID"
+                               value="@x.MovieID" />
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Remove
+                        </button>
+                    </form>
+                </td>
+                <td class="text-center">
+                    <input type="button" value="Edit" onclick="window.location.href='/Home/EditMovie'" />
+                </td>
+
+            </tr>
+                
             }
         </tbody>
     </table>
