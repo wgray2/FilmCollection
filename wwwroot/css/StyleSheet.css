@@ -1,0 +1,16 @@
+﻿body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rebeccapurple;
+}
+
+label {
+    font-size: 20px;
+    color: gold;
+    width: 100px;
+}
+ul.top-jobs li{
+    list-style-type: none;
+}
+img {
+    width: 400px;
+}
