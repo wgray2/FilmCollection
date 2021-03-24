@@ -25,9 +25,7 @@
                 <td>@x.Edited</td>
                 <td>@x.LentTo</td>
                 <td>@x.Notes</td>
-                <td>
-                    <a asp-action="EditMovie" asp-route-movid="@x.MovieID">Edit</a>
-                </td>
+                <td><a asp-action="EditMovie" asp-route-movid="@x.MovieID">Edit</a></td>
                 <td>
                     <form asp-action="DeleteMovie" method="post">
                         <input type="hidden" name="movid" value="@x.MovieID" />

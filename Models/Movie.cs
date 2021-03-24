@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace IS_413_Assignemnt_3.Models
 {
+    //Class for movies including all attributes
     public class Movie
     {
         [Key]

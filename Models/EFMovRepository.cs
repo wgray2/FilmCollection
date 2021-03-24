@@ -17,6 +17,7 @@ namespace FilmCollection.Models
         }
         public IQueryable<Movie> Movies => _context.Movies;
 
+        //Actual set up of methods. This gets passed to the repository later
         public void AddMovie(Movie mov)
         {
             _context.Add(mov);

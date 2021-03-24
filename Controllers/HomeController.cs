@@ -15,14 +15,11 @@ namespace IS_413_Assignemnt_3.Controllers
         private readonly ILogger<HomeController> _logger;
 
         //Used for updating the database
-        //private MovDbContext context { get; set; }
-        //, MovDbContext con
         private IMovRepository _repository;
 
         public HomeController(ILogger<HomeController> logger, IMovRepository repository)
         {
             _logger = logger;
-            //context = con;
             _repository = repository;
         }
 
@@ -42,7 +39,7 @@ namespace IS_413_Assignemnt_3.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Update database
+                //Add movie, update database, and send the movie object to the MovieList view
                 
                 _repository.AddMovie(movResponse);
 
@@ -55,11 +52,13 @@ namespace IS_413_Assignemnt_3.Controllers
 
         }
 
+        //Displays all movies in the repository on MoviesListed View 
         public IActionResult MoviesListed()
         {
             return View(_repository.Movies);
         }
 
+        //Grabs the correct movie from what the user picked and uses that to populate the fields in edit view
         public IActionResult EditMovie(int movid)
         {
             Movie movie = _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault();
@@ -67,6 +66,7 @@ namespace IS_413_Assignemnt_3.Controllers
             return View(movie);
         }
 
+        //Updates the attributes for the movie object we're editing and saves it to the database. Then kicks you back to the list of movies
         [HttpPost]
         public IActionResult EditMovie(Movie movie, int movid)
         {
@@ -82,6 +82,8 @@ namespace IS_413_Assignemnt_3.Controllers
             return RedirectToAction("MoviesListed");
         }
 
+
+        //Grabs id of the selected movie and uses method to delete the movie. Updates the database and kicks user to list of movies
         [HttpPost]
         public IActionResult DeleteMovie(int movid)
         {

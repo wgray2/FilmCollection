@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace FilmCollection.Models
 {
+    //Set up dbcontext for movie database
     public class MovDbContext : DbContext
     {
         public MovDbContext(DbContextOptions<MovDbContext> options) : base(options)

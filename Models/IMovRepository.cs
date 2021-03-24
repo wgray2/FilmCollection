@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace FilmCollection.Models
 {
+    //Set up movie repository with voided methods for adding, deleting, and editing movies. This is made so our repository can access it in the controller
     public interface IMovRepository
     {
         IQueryable<Movie> Movies { get; }

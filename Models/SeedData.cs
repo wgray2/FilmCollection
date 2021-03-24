@@ -10,6 +10,7 @@ namespace FilmCollection.Models
 {
     public class SeedData
     {
+        //No actual data, but necessary to initialize the database and make migrations
         public static void EnsurePopulated(IApplicationBuilder application)
         {
             MovDbContext context = application.ApplicationServices.
