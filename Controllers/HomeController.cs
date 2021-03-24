@@ -70,8 +70,8 @@ namespace IS_413_Assignemnt_3.Controllers
         [HttpPost]
         public IActionResult EditMovie(Movie movie, int movid)
         {
-            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Title = movie.Title;
             _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Category = movie.Category;
+            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Title = movie.Title;
             _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Year = movie.Year;
             _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Director = movie.Director;
             _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Rating = movie.Rating;
