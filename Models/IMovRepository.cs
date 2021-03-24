@@ -9,5 +9,15 @@ namespace FilmCollection.Models
     public interface IMovRepository
     {
         IQueryable<Movie> Movies { get; }
+
+        private static List<Movie> allMovies = new List<Movie>();
+        public static IEnumerable<Movie> AllMovies
+        {
+            get { return allMovies; }
+        }
+        public static void Delete(Movie movie)
+        {
+            Movies.Remove(movie);
+        }
     }
 }

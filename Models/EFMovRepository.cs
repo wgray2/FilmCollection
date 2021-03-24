@@ -16,5 +16,7 @@ namespace FilmCollection.Models
             _context = context;
         }
         public IQueryable<Movie> Movies => _context.Movies;
+
+        
     }
 }

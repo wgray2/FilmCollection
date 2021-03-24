@@ -65,6 +65,21 @@ namespace IS_413_Assignemnt_3.Controllers
             });
         }
 
+        public IActionResult EditMovie(int movid)
+        {
+            Movie movie = _repository.AllMovies.Where(m => m.MovieID == movid)
+            
+            return View(movie);
+        }
+
+        [HttpPost]
+        public IActionResult EditMovie(Movie movie)
+        {
+
+            context.SaveChanges();
+            return View();
+        }
+
         public IActionResult Podcasts()
         {
             return View();
