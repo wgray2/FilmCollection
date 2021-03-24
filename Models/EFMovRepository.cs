@@ -17,6 +17,22 @@ namespace FilmCollection.Models
         }
         public IQueryable<Movie> Movies => _context.Movies;
 
-        
+        public void AddMovie(Movie mov)
+        {
+            _context.Add(mov);
+            _context.SaveChanges();
+        }
+
+        public void DeleteMovie(Movie mov)
+        {
+            _context.Remove(mov);
+            _context.SaveChanges();
+        }
+
+        public void EditMovie(Movie mov)
+        {
+            _context.SaveChanges();
+        }
+
     }
 }

@@ -16,3 +16,4 @@ namespace FilmCollection.Models
         public DbSet<Movie> Movies { get; set; }
     }
 }
+

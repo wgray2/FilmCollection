@@ -10,14 +10,8 @@ namespace FilmCollection.Models
     {
         IQueryable<Movie> Movies { get; }
 
-        private static List<Movie> allMovies = new List<Movie>();
-        public static IEnumerable<Movie> AllMovies
-        {
-            get { return allMovies; }
-        }
-        public static void Delete(Movie movie)
-        {
-            Movies.Remove(movie);
-        }
+        void AddMovie(Movie mov);
+        void DeleteMovie(Movie mov);
+        void EditMovie(Movie mov);
     }
 }

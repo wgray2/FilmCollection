@@ -1,5 +1,4 @@
 ﻿using FilmCollection.Models;
-using FilmCollection.Models.ViewModels;
 using IS_413_Assignemnt_3.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -16,14 +15,14 @@ namespace IS_413_Assignemnt_3.Controllers
         private readonly ILogger<HomeController> _logger;
 
         //Used for updating the database
-        private MovDbContext context { get; set; }
-        //
+        //private MovDbContext context { get; set; }
+        //, MovDbContext con
         private IMovRepository _repository;
 
-        public HomeController(ILogger<HomeController> logger, MovDbContext con, IMovRepository repository)
+        public HomeController(ILogger<HomeController> logger, IMovRepository repository)
         {
             _logger = logger;
-            context = con;
+            //context = con;
             _repository = repository;
         }
 
@@ -45,10 +44,9 @@ namespace IS_413_Assignemnt_3.Controllers
             {
                 //Update database
                 
-                context.Movies.Add(movResponse);
-                context.SaveChanges();
+                _repository.AddMovie(movResponse);
 
-                return View("MoviesListed");
+                return View("MovieList", movResponse);
             }
             else
             {
@@ -59,25 +57,37 @@ namespace IS_413_Assignemnt_3.Controllers
 
         public IActionResult MoviesListed()
         {
-            return View(new MovieViewModel
-            {
-                Movies = _repository.Movies
-            });
+            return View(_repository.Movies);
         }
 
         public IActionResult EditMovie(int movid)
         {
-            Movie movie = _repository.AllMovies.Where(m => m.MovieID == movid)
+            Movie movie = _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault();
             
             return View(movie);
         }
 
         [HttpPost]
-        public IActionResult EditMovie(Movie movie)
+        public IActionResult EditMovie(Movie movie, int movid)
         {
+            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Title = movie.Title;
+            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Category = movie.Category;
+            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Year = movie.Year;
+            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Director = movie.Director;
+            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Rating = movie.Rating;
+            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Edited = movie.Edited;
+            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().LentTo = movie.LentTo;
+            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Notes = movie.Notes;
+            _repository.EditMovie(movie);
+            return RedirectToAction("MoviesListed");
+        }
 
-            context.SaveChanges();
-            return View();
+        [HttpPost]
+        public IActionResult DeleteMovie(int movid)
+        {
+            Movie movie = _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault();
+            _repository.DeleteMovie(movie);
+            return RedirectToAction("MoviesListed");
         }
 
         public IActionResult Podcasts()
