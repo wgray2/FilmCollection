@@ -6,6 +6,7 @@
 
 <form asp-action="EditMovie" method="post">
     <div class="form-group">
+        <input asp-for="MovieID" type="hidden"/>
         <label asp-for="Category">Category:</label>
         <select asp-for="Category">
             <option value="">Select One</option>

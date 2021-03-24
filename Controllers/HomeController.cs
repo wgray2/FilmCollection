@@ -68,16 +68,16 @@ namespace IS_413_Assignemnt_3.Controllers
 
         //Updates the attributes for the movie object we're editing and saves it to the database. Then kicks you back to the list of movies
         [HttpPost]
-        public IActionResult EditMovie(Movie movie, int movid)
+        public IActionResult EditMovie(Movie movie, int MovieID)
         {
-            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Category = movie.Category;
-            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Title = movie.Title;
-            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Year = movie.Year;
-            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Director = movie.Director;
-            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Rating = movie.Rating;
-            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Edited = movie.Edited;
-            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().LentTo = movie.LentTo;
-            _repository.Movies.Where(m => m.MovieID == movid).FirstOrDefault().Notes = movie.Notes;
+            _repository.Movies.Where(m => m.MovieID == MovieID).FirstOrDefault().Category = movie.Category;
+            _repository.Movies.Where(m => m.MovieID == MovieID).FirstOrDefault().Title = movie.Title;
+            _repository.Movies.Where(m => m.MovieID == MovieID).FirstOrDefault().Year = movie.Year;
+            _repository.Movies.Where(m => m.MovieID == MovieID).FirstOrDefault().Director = movie.Director;
+            _repository.Movies.Where(m => m.MovieID == MovieID).FirstOrDefault().Rating = movie.Rating;
+            _repository.Movies.Where(m => m.MovieID == MovieID).FirstOrDefault().Edited = movie.Edited;
+            _repository.Movies.Where(m => m.MovieID == MovieID).FirstOrDefault().LentTo = movie.LentTo;
+            _repository.Movies.Where(m => m.MovieID == MovieID).FirstOrDefault().Notes = movie.Notes;
             _repository.EditMovie(movie);
             return RedirectToAction("MoviesListed");
         }
